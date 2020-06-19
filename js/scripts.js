@@ -1,61 +1,99 @@
 // Business Logic
-  function PizzaParlor(){
-    this.pizzaOrders = []
-  }
+function PizzaParlor(){
+  this.pizzaOrders = [],
+  this.currentId = 0
+}
 
 PizzaParlor.prototype.addPizzaOrder = function(pizzaOrder) {
+  pizzaOrder.id = this.assignId();
   this.pizzaOrder.push(pizzaOrder);
+  }
+
+PizzaParlor.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
+
+PizzaParlor.prototype.findPizzaOrder = function(id) {
+  for (let i=0; i< this.pizzaOrders.length; i++) {
+    if(this.pizzaOrders[i]) {
+      if (this.pizzaOrders[i].id==id) {
+        delete this.pizzaOrders[i];
+        return true;
+    }
+  }
+};
+return false;
 }
 
 function PizzaOrder(firstName, lastName, phoneNum, size, toppings, pizzaPrice) {
-  this.firstName = firstName,
-  this.lastName = lastName,
-  this.phoneNum = phoneNum
-  this.size = size,
-  this.toppings = toppings
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.phoneNum = phoneNum;
+  this.size = size;
+  this.toppings = toppings;
   this.pizzaPrice = pizzaPrice
 }
 
+PizzaOrder.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+}
+//this is unfinished
 PizzaOrder.prototype.pizzaCost = function() {
   return pizzaPrice = size + toppings;
   // take in number of toppings selected multiplied by 50 cents
 }
 
-// User Interface Logic
-function showCost(pizzaSize){
-// create equation if small show else large show
-//let smallPizza = 10
-//let largePizza - 15
-
-
+// function showOrder(pizzaOrder){
+//   const order = pizzaParlor.addPizzaOrder(this.pizzaOrders);
+//   $("#show-order").show();
+// }
+let pizzaParlor = new PizzaParlor();
+function displayPizzaOrderDetails(pizzaParlorToDisplay) {
+  let orderList = $("ul#orders");
+  let htmlForOrderInfo = "";
+  pizzaParlorToDisplay.orders.forEach(function(order) {
+    htmlForOrderInfo += "<li id=" + order.id + ">" + order.firstName + " " + order.lastName + "</li>";
+  });
+  ordersList.html(htmlForOrderInfo);
 }
 
+function showOrder(orderId) {
+  const order = pizzaBarlor.findPizzaOrder(orderId);
+  $("#show-order").show();
+  $(".first-name").html(order.firstName);
+  $(".last-name").html(order.lasttName);
+  $(".phone-number").html(order.phoneNum);
+  $(".pizza-size").html(order.size);
+  $(".pizza-toppings").html(order.toppings);
+  $(".pizza-price").html(order.pizzaPrice);
+}
+
+function attachOrderListeners() {
+  $("ul#orders").on("click", "li", function (){
+    showOrder(this.id);
+  });
+}
 $(document).ready(function() {
-  let pizzaParlor = new PizzaParlor();
-  //let completedOrder;
-$("form#orderForm").submit(function(event) {
-  event.preventDefault();
-  const inputtedFirstName = $("input#new-first-name").val();
-  const inputtedLastName = $("input#new-last-name").val();
-  const inputtedPhoneNumber = $("input#new-phone-num").val();
-  const inputtedPizzaSize = $("input:radio[name=select-toppings]:checked").val();
-  const inputtedToppings = $("input:checkbox[name=select-toppings]:checked").val();
+  let newOrder;
+  attachOrderListeners();
+  $("form#orderForm").submit(function(event) {
+    event.preventDefault;
+    const inputtedFirstName = $("input#new-first-name").val();
+    const inputtedLastName = $("input#new-last-name").val();
+    const inputtedPhoneNumber = $("input#new-phone-num").val();
+    const inputtedPizzaSize = $(this).val();
+    const inputtedToppings = $("input:checkbox[name=select-toppings]:checked").each(function(){
+      inputtedToppings = $(this).val();
+    });
 
-  $("input#new-first-name").val("");
-  $("input#new-last-name").val("");
-  $("input#new-phone-num").val("");
-  $("input:radio[name=select-toppings]:checked").val("");
-  $("input:checkbox[name=select-toppings]:checked").val("");
+    $("input#new-first-name").val("");
+    $("input#new-last-name").val("");
+    $("input#new-phone-num").val("");
 
-  completedOrder = new PizzaOrder(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPizzaSize, inputtedToppings);
-  pizzaParlor.addPizzaOrder(completedOrder);
-  displayPizzaOrder(completedOrder);
+    newOrder = new PizzaOrder(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPizzaSize, inputtedToppings);
+    pizzaParlor.addPizzaOrder(newOrder);
+    displayPizzaOrderDetails(pizzaParlor);
 
-// call showcost
-})
+  });
 });
-//let pizzaOrder = new PizzaOrder()
-//let smallPizza = 10
-//let largePizza - 15
-//let toppings = .50
-//let toppings = .50 
