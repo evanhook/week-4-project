@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.5.1.js"></script>
     <script src="js/scripts.js"></script>
-  <title>PIZZA PARLOR</title>
-</head>
-<body>
-  
-</body>
+    <title>PIZZA PARLOR</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>PIZZA PARLOR</h1>
+      <h2>Order</h2>
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="new-first-name">First Name</label>
+          <input type="text" class="form-control" id="new-first-name">
+        </div>
+        <div class="form-group">
+          <label for="new-last-name">Last Name</label>
+          <input type="text" class="form-control" id="new-last-name">
+        </div>
+        <div class="form-group">
+          <label for="new-phone-num">Phone Number</label>
+          <input type="text" class="form-control" id="new-phone-num">
+        </div>
+
+        <div class="form-group">
+          <p>Select Pizza Size</p>
+          <input type="radio" name="select-size" value="small">Small<br>
+          <input type="radio" name="select-size" value="large">Large<br>
+        </div>
+        <div class="form-group">
+          <p>Select Toppings</p>
+          <!--change value to topping price instead?-->
+          <input type="checkbox" name="select-toppings" value="cheese">Cheese<br>
+          <input type="checkbox" name="select-toppings" value="pepperoni">Pepperoni<br>
+          <input type="checkbox" name="select-toppings" value="mushrooms">Mushrooms<br>
+          <input type="checkbox" name="select-toppings" value="peppers">Peppers<br>
+        </div>
+
+        <button type="submit" class="btn-primary">Order Now</button>
+      </form>
+      <!--this is where the completed form will show-->
+      <div id="show-order">
+        <h2>Your Order</h2>
+        <p>First Name: <span class="first-name"></span></p>
+        <p>Last Name: <span class="last-name"></span></p>
+        <p>Phone Number: <span class="phone-num"></span></p>
+        <p>Pizza Size: <span class="pizza-size"></span></p>
+        <p> Toppings: <span class="pizza-toppings"></span></p>
+        <p>Price: <span></span></p>
+
+      </div>
+    </div>
+  </body>
 </html>
