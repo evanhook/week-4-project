@@ -14,16 +14,16 @@ Site creates a pizza shop
 * Output: Pizza shop object: {pizzaOrders: []}
 
 User is able to complete a form to order a pizza with sections for size and toppings
-* Input: user completes a form with their name, pizza size, pizza toppings: "Elizabeth Van Hook, small pizza, cheese, pepperoni"
+* Input: user completes a form with their name, pizza size, pizza toppings: "Elizabeth, small pizza, cheese, pepperoni"
 * Output: None
 
 Site calculates cost of pizza based on pizza size and toppings selected
-* Input: Formula calculates $10 for a small pizza, $15 for a large pizza, and $0.50 per topping: "Elizabeth Van Hook, small pizza, cheese, pepperoni"
+* Input: Formula calculates $10 for a small pizza, $15 for a large pizza, and $0.50 per topping: "Elizabeth, small pizza, cheese, pepperoni"
 * Output: $11.00
 
 User is able to review their completed order on the page
 * Input: None
-* Output: "Elizabeth Van Hook, small pizza, cheese, pepperoni"
+* Output: "Elizabeth, small pizza, cheese, pepperoni"
 
 ## Setup & Installation
 * Clone repository using this link: https://github.com/evanhook/arrays-and-looping-project.git
