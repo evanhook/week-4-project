@@ -26,29 +26,26 @@ PizzaParlor.prototype.findPizzaOrder = function(id) {
 return false;
 }
 
-function PizzaOrder(firstName, lastName, phoneNum, size, toppings, pizzaPrice) {
+function PizzaOrder(firstName, lastName, phoneNum) {
   this.firstName = firstName;
   this.lastName = lastName;
-  this.phoneNum = phoneNum;
-  this.size = size;
-  this.toppings = toppings;
-  this.pizzaPrice = pizzaPrice
+  this.phoneNum = phoneNum
+  // this.size = size;
+  // this.toppings = toppings;
+  // this.pizzaPrice = pizzaPrice
 }
 
 PizzaOrder.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
 //this is unfinished
-PizzaOrder.prototype.pizzaCost = function() {
-  return pizzaPrice = size + toppings;
-  // take in number of toppings selected multiplied by 50 cents
-}
-
-// function showOrder(pizzaOrder){
-//   const order = pizzaParlor.addPizzaOrder(this.pizzaOrders);
-//   $("#show-order").show();
+// PizzaOrder.prototype.pizzaCost = function() {
+//   return pizzaPrice = size + toppings;
+//   // take in number of toppings selected multiplied by 50 cents
 // }
+
 let pizzaParlor = new PizzaParlor();
+
 function displayPizzaOrderDetails(pizzaParlorToDisplay) {
   let orderList = $("ul#orders");
   let htmlForOrderInfo = "";
@@ -56,7 +53,7 @@ function displayPizzaOrderDetails(pizzaParlorToDisplay) {
     htmlForOrderInfo += "<li id=" + order.id + ">" + order.firstName + " " + order.lastName + "</li>";
   });
   ordersList.html(htmlForOrderInfo);
-}
+};
 
 function showOrder(orderId) {
   const order = pizzaBarlor.findPizzaOrder(orderId);
@@ -64,16 +61,25 @@ function showOrder(orderId) {
   $(".first-name").html(order.firstName);
   $(".last-name").html(order.lasttName);
   $(".phone-number").html(order.phoneNum);
-  $(".pizza-size").html(order.size);
-  $(".pizza-toppings").html(order.toppings);
-  $(".pizza-price").html(order.pizzaPrice);
+  // $(".pizza-size").html(order.size);
+  // $(".pizza-toppings").html(order.toppings);
+  // $(".pizza-price").html(order.pizzaPrice);
 }
+
+// function pizzaSizeCost(smallPizza){
+//   if (smallPizza = $("input:radio[name=select-size]:checked")){
+//     this.size = 10;
+//   } else  {
+//   this.size = 15;
+//   }
+// }
 
 function attachOrderListeners() {
   $("ul#orders").on("click", "li", function (){
     showOrder(this.id);
   });
 }
+
 $(document).ready(function() {
   let newOrder;
   attachOrderListeners();
@@ -82,18 +88,17 @@ $(document).ready(function() {
     const inputtedFirstName = $("input#new-first-name").val();
     const inputtedLastName = $("input#new-last-name").val();
     const inputtedPhoneNumber = $("input#new-phone-num").val();
-    const inputtedPizzaSize = $(this).val();
-    const inputtedToppings = $("input:checkbox[name=select-toppings]:checked").each(function(){
-      inputtedToppings = $(this).val();
-    });
+    // const inputtedPizzaSize = $(this).val();
+    // const inputtedToppings = $("input:checkbox[name=select-toppings]:checked").each(function(){
+    //   inputtedToppings = $(this).val();
+    // });
 
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
     $("input#new-phone-num").val("");
 
-    newOrder = new PizzaOrder(inputtedFirstName, inputtedLastName, inputtedPhoneNumber, inputtedPizzaSize, inputtedToppings);
+    newOrder = new PizzaOrder(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
     pizzaParlor.addPizzaOrder(newOrder);
     displayPizzaOrderDetails(pizzaParlor);
-
   });
 });
