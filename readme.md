@@ -11,7 +11,7 @@ This page will allow a user to order a pizza and will return their completed ord
 ## Specifications
 Site creates a pizza shop
 * Input: None
-* Output: Pizza shop object: {pizzaOrders: [], currentID:0}
+* Output: Pizza shop object: {pizzaOrders: []}
 
 User is able to complete a form to order a pizza with sections for size and toppings
 * Input: user completes a form with their name, pizza size, pizza toppings: "Elizabeth Van Hook, small pizza, cheese, pepperoni"
